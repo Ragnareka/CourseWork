@@ -1,0 +1,94 @@
+﻿Построение начато 16.02.2016 9:08:43.
+     1>Проект "C:\Users\Maria\Documents\Visual Studio 2010\Projects\test\test\test.vcxproj" в узле 2 (целевые объекты build).
+     1>InitializeBuildStatus:
+         Обращение к "Debug\test.unsuccessfulbuild".
+       GenerateTargetFrameworkMonikerAttribute:
+       Целевой объект "GenerateTargetFrameworkMonikerAttribute" пропускается, так как все выходные файлы актуальны по отношению к входным.
+       ClCompile:
+         Для всех выходных данных обновления не требуется.
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /AI"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0" /Zi /clr:pure /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _UNICODE /D UNICODE /EHa /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\test.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /TP /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Core.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Data.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Drawing.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Windows.Forms.dll" /FU"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.dll" /analyze- /errorReport:prompt Analis.cpp GeneticAlgorithm.cpp struct.cpp test.cpp /clr:nostdlib 
+         Analis.cpp
+     1>Analis.cpp(4): fatal error C1010: непредвиденный конец файла во время поиска предкомпилированного заголовка. Возможно, вы забыли добавить директиву "#include "StdAfx.h"" в источник.
+         GeneticAlgorithm.cpp
+     1>GeneticAlgorithm.cpp(2): fatal error C1010: непредвиденный конец файла во время поиска предкомпилированного заголовка. Возможно, вы забыли добавить директиву "#include "StdAfx.h"" в источник.
+         struct.cpp
+     1>struct.cpp(44): fatal error C1010: непредвиденный конец файла во время поиска предкомпилированного заголовка. Возможно, вы забыли добавить директиву "#include "StdAfx.h"" в источник.
+         test.cpp
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(94): error C2039: btnOpen_Click: не является членом "test::Form1"
+                 c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(15): см. объявление "test::Form1"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(94): error C2065: btnOpen_Click: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(94): error C3350: System::EventHandler: для конструктора делегата требуется 2 аргументов
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(172): error C2039: textBox2_TextChanged: не является членом "test::Form1"
+                 c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(15): см. объявление "test::Form1"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(172): error C2065: textBox2_TextChanged: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(172): error C3350: System::EventHandler: для конструктора делегата требуется 2 аргументов
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(210): error C2653: TForm1: не является именем класса или пространства имен
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(210): error C2065: TObject: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(210): error C2065: Sender: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(211): error C2448: FormCreate: вероятно, инициализатор, использующий стиль функции, является определением функции
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(218): error C2653: TForm1: не является именем класса или пространства имен
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(218): error C2065: TObject: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(218): error C2065: Sender: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(219): error C2448: сomboBox2Select: вероятно, инициализатор, использующий стиль функции, является определением функции
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(220): error C2039: ItemIndex: не является членом "System::Windows::Forms::ComboBox"
+                 c:\program files (x86)\reference assemblies\microsoft\framework\.netframework\v4.0\system.windows.forms.dll: см. объявление "System::Windows::Forms::ComboBox"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(221): error C3861: ShowMessage: идентификатор не найден
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(223): error C2039: ItemIndex: не является членом "System::Windows::Forms::ComboBox"
+                 c:\program files (x86)\reference assemblies\microsoft\framework\.netframework\v4.0\system.windows.forms.dll: см. объявление "System::Windows::Forms::ComboBox"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(224): error C3861: ShowMessage: идентификатор не найден
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(226): error C2039: ItemIndex: не является членом "System::Windows::Forms::ComboBox"
+                 c:\program files (x86)\reference assemblies\microsoft\framework\.netframework\v4.0\system.windows.forms.dll: см. объявление "System::Windows::Forms::ComboBox"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(227): error C3861: ShowMessage: идентификатор не найден
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(229): error C2039: ItemIndex: не является членом "System::Windows::Forms::ComboBox"
+                 c:\program files (x86)\reference assemblies\microsoft\framework\.netframework\v4.0\system.windows.forms.dll: см. объявление "System::Windows::Forms::ComboBox"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(230): error C3861: ShowMessage: идентификатор не найден
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(238): error C2059: синтаксическая ошибка: private
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(240): error C2355: this: может указываться только в нестатических членах-функциях
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(240): error C2227: выражение слева от "->openFileDialog" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(240): error C2227: выражение слева от "->ShowDialog" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(243): error C2227: выражение слева от "->FileName" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+                 тип: 'unknown-type'
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(243): error C2227: выражение слева от "->Length" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(244): error C2227: выражение слева от "->FileName" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+                 тип: 'unknown-type'
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(245): error C2227: выражение слева от "->FileName" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+                 тип: 'unknown-type'
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(245): error C2227: выражение слева от "->Length" должно указывать на тип класса, структуры или объединения либо на универсальный тип
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(247): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(249): error C2059: синтаксическая ошибка: private
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(251): error C2059: синтаксическая ошибка: }
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(251): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\Form1.h(251): error C2059: синтаксическая ошибка: }
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(16): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(22): error C2079: "in" использует неопределенный class "std::basic_ifstream<_Elem,_Traits>"
+                 with
+                 [
+                     _Elem=char,
+                     _Traits=std::char_traits<char>
+                 ]
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(23): error C2039: open: не является членом "System::Int32"
+                 c:\program files (x86)\reference assemblies\microsoft\framework\.netframework\v4.0\mscorlib.dll: см. объявление "System::Int32"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(23): error C2065: fileName: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(24): error C2039: is_open: не является членом "System::Int32"
+                 c:\program files (x86)\reference assemblies\microsoft\framework\.netframework\v4.0\mscorlib.dll: см. объявление "System::Int32"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(28): error C3861: getline: идентификатор не найден
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(31): error C2014: команда препроцессора не должна начинаться с пробела
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(32): error C2065: ’: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(32): error C2143: синтаксическая ошибка: отсутствие ")" перед "std::stringstream"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(33): error C2065: s: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(34): error C2143: синтаксическая ошибка: отсутствие ")" перед "}"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(34): error C2143: синтаксическая ошибка: отсутствие ";" перед ")"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(35): error C3861: getline: идентификатор не найден
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(38): error C2065: vectorBase: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(38): error C2228: выражение слева от ".push_back" должно представлять класс, структуру или объединение
+                 тип: 'unknown-type'
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(38): error C2065: position: необъявленный идентификатор
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(41): error C2059: синтаксическая ошибка: }
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(41): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+     1>c:\users\maria\documents\visual studio 2010\projects\test\test\struct.cpp(41): error C2059: синтаксическая ошибка: }
+         Создание кода...
+     1>Построение проекта "C:\Users\Maria\Documents\Visual Studio 2010\Projects\test\test\test.vcxproj" завершено (целевые объекты build) с ошибкой.
+
+СБОЙ построения.
+
+Затраченное время: 00:00:00.69
