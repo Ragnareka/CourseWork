@@ -1,0 +1,13 @@
+\select@language {russian}
+\contentsline {section}{\CYRO \CYRP \CYRR \CYRE \CYRD \CYRE \CYRL \CYRE \CYRN \CYRI \CYRYA }{3}{Doc-Start}
+\contentsline {section}{\Russian \CYRV \CYRV \CYRE \CYRD \CYRE \CYRN \CYRI \CYRE }{4}{Doc-Start}
+\contentsline {section}{\numberline {1 }\IeC {\CYRG }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyre }\IeC {\cyrt }\IeC {\cyri }\IeC {\cyrch }\IeC {\cyre }\IeC {\cyrs }\IeC {\cyrk }\IeC {\cyri }\IeC {\cyrishrt } \IeC {\cyra }\IeC {\cyrl }\IeC {\cyrg }\IeC {\cyro }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrt }\IeC {\cyrm }}{4}{section.1}
+\contentsline {section}{\numberline {2 }\IeC {\CYRP }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyra } \IeC {\cyrv }\IeC {\cyrery }\IeC {\cyrb }\IeC {\cyro }\IeC {\cyrr }\IeC {\cyra } \IeC {\cyrp }\IeC {\cyro }\IeC {\cyrr }\IeC {\cyrt }\IeC {\cyrf }\IeC {\cyre }\IeC {\cyrl }\IeC {\cyrya } \IeC {\cyrc }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyrh } \IeC {\cyrb }\IeC {\cyru }\IeC {\cyrm }\IeC {\cyra }\IeC {\cyrg }}{4}{section.2}
+\contentsline {section}{\numberline {3 }\IeC {\cyrp }\IeC {\cyrr }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyri }\IeC {\cyrk }\IeC {\cyra }}{4}{section.3}
+\contentsline {section}{\numberline {4 }\IeC {\cyrg }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrp }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyri }, \IeC {\cyrm }\IeC {\cyrn }\IeC {\cyre } \IeC {\cyrch }\IeC {\cyrt }\IeC {\cyro }, \IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyrsftsn } \IeC {\cyrm }\IeC {\cyre }\IeC {\cyrt }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyri }\IeC {\cyrch }. \IeC {\cyrp }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyri }\IeC {\cyre } \IeC {\cyrd }\IeC {\cyrl }\IeC {\cyrya } \IeC {\cyri }\IeC {\cyrs }\IeC {\cyrp }\IeC {\cyro }\IeC {\cyrl }\IeC {\cyrsftsn }\IeC {\cyrz }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }? }{4}{section.4}
+\contentsline {section}{\numberline {5 }}{4}{section.5}
+\contentsline {section}{\Russian \CYRZ \CYRA \CYRK \CYRL \CYRYU \CYRCH \CYRE \CYRN \CYRI \CYRE }{4}{section.5}
+\redeflsection 
+\ttl@change@i {\@ne }{section}{3ex}{\hspace {-3ex}}{\appendixname ~\thecontentslabel \hspace {2ex}}{\hspace {2.3em}}{\titlerule *[0.98ex]{.}\contentspage }\relax 
+\ttl@change@v {section}{}{}{}\relax 
+\contentsfinish 
