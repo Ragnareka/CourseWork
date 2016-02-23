@@ -35,6 +35,13 @@ int n=0;
 while (in.peek()!=EOF)//пока не считан маркер конца файла
 {  VecBase.push_back(data); 
 	in>>VecBase.at(n).tiker;
+	in>>VecBase.at(n).day;
+	in>>VecBase.at(n).month;
+	in>>VecBase.at(n).year;
+	in>>VecBase.at(n).openPrice;
+	in>>VecBase.at(n).maxPrice;
+	in>>VecBase.at(n).minPrice;
+	in>>VecBase.at(n).closePrice;
 // others
 n++;
 };
