@@ -1,0 +1,171 @@
+#include "stdafx.h"
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <cstdlib>
+
+
+
+using namespace std;
+
+
+struct Base // ñòðóêòóðà äàííûõ 
+
+{
+   char tiker[35];
+	  char per[10];
+	int dateymd;
+	float openPrice;
+	float maxPrice;
+	float minPrice;
+	float closePrice;
+	float volume;
+	float Doch;
+	float Risk;
+//	
+   };
+
+
+struct Analys // ñòðóêòóðà äàííûõ 
+
+{ char tiker[35];
+	 float OgDoh;
+	 float Risk;
+
+    // îñòàëüíûå ýëåìåíòû ñòðóêòóðû  
+	
+};
+
+
+
+    bool comparer (const Base& a, const Base& b) 
+    { if (strcmp(a.tiker, b.tiker) == -1)
+		{return true;}
+	else { return false;}
+    };
+	
+	
+
+
+int main()
+{ 
+	
+	
+vector <Base> VecBase; //Âåêòîð vecBase ñîäåðæèò ñòðóêòóðû òèïà Base äëÿ ðàáîòû ñ äàííûìè íà äàííûé ìîìåíò
+ifstream in ("BaseData.txt");
+
+Base data; //×òîáû ïîìåñòèòü â ñòðóêòóðó îáúåêò, îáúåêò äîëæåí ñóùåñòâîâàòü
+int n=0;
+while (in.peek()!=EOF)//ïîêà íå ñ÷èòàí ìàðêåð êîíöà ôàéëà
+{  VecBase.push_back(data); 
+	in>>VecBase.at(n).tiker;
+		in>>VecBase.at(n).per;
+	in>>VecBase.at(n).dateymd;
+	in>>VecBase.at(n).openPrice;
+	in>>VecBase.at(n).maxPrice;
+	in>>VecBase.at(n).minPrice;
+	in>>VecBase.at(n).closePrice;
+	in>>VecBase.at(n).volume;
+
+// others
+n++;
+};
+
+in.close();
+
+std::sort(VecBase.begin(), VecBase.end(), comparer );
+vector <Analys> vec;
+Analys tabl;
+
+
+
+for (int i=0; i<n; i++) 
+{ 
+	if ( i !=0 && strcmp( VecBase[i].tiker, VecBase[i-1].tiker) == 0 )
+	{
+	VecBase[i].Doch = 100*( log (VecBase[i].closePrice / VecBase[i-1].closePrice)) ;
+
+	}
+	else {VecBase[i].Doch = 0;
+	
+	 ;}
+		
+}; 
+
+ int k=0;
+int chet = 0;
+float sum=0;
+ // вычисление ожидаемой доходности
+	 for (int i=0; i<n; i++) 
+	{  
+		if ( i!= 0 && strcmp( VecBase[i].tiker, VecBase[i-1].tiker) == 0 )
+		{ 
+		chet ++;
+		sum= sum+ VecBase[i].Doch;
+			if (i==n-1)
+			{	
+				vec[k].OgDoh = sum/chet; 
+				break;
+			}
+		}
+		else
+		{ 
+			if (i == 0)
+			{	
+			vec.push_back(tabl);
+			strcpy( vec[0].tiker,  VecBase[0].tiker); 
+			chet=1;
+			
+		}
+			else
+			{  
+				vec[k].OgDoh = sum/chet; 
+				k++; 
+				vec.push_back(tabl);
+				strcpy( vec[k].tiker,  VecBase[i].tiker);
+				chet=1;
+				sum=0; 
+			}
+		}
+			
+	}; 
+	int kol=chet;
+	int t=0;
+	sum =0;
+	
+	// вычисление рисков
+	
+	  for (int i=0; i<n; i++) 
+	{ 
+		if ( i!= 0 && strcmp( VecBase[i].tiker, VecBase[i-1].tiker) == 0 )
+		{
+		VecBase[i].Risk = abs( VecBase[i].Doch - vec[t].OgDoh);
+		}
+		else
+		{ 
+				if (i==0) 
+			{VecBase[0].Risk = abs( VecBase[0].Doch - vec[0].OgDoh);
+			}
+		t++;
+		VecBase[i].Risk = abs( VecBase[i].Doch - vec[t].OgDoh);
+		}
+	  }
+	 
+		 
+	
+	  // 
+	  //
+	
+   for (int i=0; i<n; i++) {
+    cout << VecBase[i].tiker << '	'<< VecBase[i].per<< '	' << VecBase[i].Doch << '	' << VecBase[i].Risk <<endl; };
+	 for (int j=0; j<k+1; j++) {
+		  cout <<  '	'<< endl;
+		  cout << vec[j].tiker<< '	'<< vec[j].OgDoh << '	'<< vec[j].Risk <<endl;
+	 }
+ 
+   system("pause");
+
+	return 0;
+}
