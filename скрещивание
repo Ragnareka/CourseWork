@@ -1,0 +1,538 @@
+#include "stdafx.h"
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <algorithm>
+#include <cstdlib>
+
+
+
+
+using namespace std;
+
+//#include "GA.h"
+
+
+struct Base // ñòðóêòóðà äàííûõ 
+
+{
+	char tiker[35];
+	char per[10];
+	int dateymd;
+	float openPrice;
+	float maxPrice;
+	float minPrice;
+	float closePrice;
+	float volume;
+	float Doch;
+	float Risk;
+
+	//	
+};
+
+
+
+struct Analys // ñòðóêòóðà äàííûõ 
+
+{
+	char tiker[35];
+	float OgDoh;
+	float Risk;
+	float kov;
+
+	// îñòàëüíûå ýëåìåíòû ñòðóêòóðû  
+
+};
+bool comparer (const Base& a, const Base& b) 
+{
+	if (strcmp(a.tiker, b.tiker) == -1)
+	{
+		return true;
+	}
+	else {
+		return false;
+	}
+};
+
+void print (float **mas, int n, int t)
+{
+	cout<<"tiker ";
+	for (int i = 0; i<(t+1); i++)
+	{
+		for (int h = 0; h<n+1; h++)
+		{ 
+			cout<<mas[i][h]<<"	";
+		}
+		cout<<endl;
+	}
+};
+
+class Population
+{  public: 
+std::vector<int> vid;
+// const int ras;
+
+Population(int ras)
+{	
+	CreatePop(ras);
+}
+
+Population( )
+{	
+	CreatePop(1);
+}
+void CreatePop (int ras)
+{
+	vid.reserve(ras); 
+	int sum = 0;
+	for(int i = 0; i < ras; i++)
+	{
+		vid[i] = rand() % 100;
+
+	};
+};
+
+int life( int rasm)
+{
+	int sum = 0;
+	for(int i=0;i<rasm;i++)
+	{
+		sum = sum + vid[i];
+	}
+	return sum;
+};
+
+int Dohodnost(vector <Analys> vec, int rasm)
+{
+	int sum = 0;
+	for(int i=0;i<rasm;i++)
+	{
+		sum = sum + vec[i].OgDoh * vid[i]/100;
+	}
+	return sum;
+};
+int Risk ( float *mas, int p)
+{ float sum =0;
+int solution =0;
+
+for(int i=0;i<p;i++)
+{ sum += mas[i] * vid[i]; 
+} ;
+solution = sqrt(sum) ;
+
+return solution;
+}
+
+void Print(int )
+{for (int i=0;i<vid.size();i++)
+{cout<<vid[i]<<"\t";
+}
+};
+};
+void vecPrint (vector <Analys> vec){
+	{for (int i=0;i<vec.size();i++)
+	{cout<<vec[i].tiker<<"\t";
+	}
+	cout<<endl;
+	};
+};
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int main()
+{ 
+
+
+	vector <Base> VecBase; //Âåêòîð vecBase ñîäåðæèò ñòðóêòóðû òèïà Base äëÿ ðàáîòû ñ äàííûìè íà äàííûé ìîìåíò
+	ifstream in ("BaseData.txt");
+
+	Base data; //×òîáû ïîìåñòèòü â ñòðóêòóðó îáúåêò, îáúåêò äîëæåí ñóùåñòâîâàòü
+	int n=0;
+	while (in.peek()!=EOF)//ïîêà íå ñ÷èòàí ìàðêåð êîíöà ôàéëà
+	{  VecBase.push_back(data); 
+	in>>VecBase.at(n).tiker;
+	in>>VecBase.at(n).per;
+	in>>VecBase.at(n).dateymd;
+	in>>VecBase.at(n).openPrice;
+	in>>VecBase.at(n).maxPrice;
+	in>>VecBase.at(n).minPrice;
+	in>>VecBase.at(n).closePrice;
+	in>>VecBase.at(n).volume;
+
+	// others
+	n++;
+	};
+
+	in.close();
+
+	std::sort(VecBase.begin(), VecBase.end(), comparer );
+	vector <Analys> vec;
+	Analys tabl;
+
+
+
+	for (int i=0; i<n; i++) 
+	{ 
+		if ( i !=0 && strcmp( VecBase[i].tiker, VecBase[i-1].tiker) == 0 )
+		{
+			VecBase[i].Doch = 100*( log (VecBase[i].closePrice / VecBase[i-1].closePrice)) ;
+
+		}
+		else {VecBase[i].Doch = 0;
+
+		;}
+
+	}; 
+
+	int k=0;
+	int chet = 0;
+	float sum=0;
+	// вычисление ожидаемой доходности
+	for (int i=0; i<n; i++) 
+	{  
+		if ( i!= 0 && strcmp( VecBase[i].tiker, VecBase[i-1].tiker) == 0 )
+		{ 
+			chet ++;
+			sum= sum+ VecBase[i].Doch;
+			if (i==n-1)
+			{	
+				vec[k].OgDoh = sum/chet; 
+				break;
+			}
+		}
+		else
+		{ 
+			if (i == 0)
+			{	
+				vec.push_back(tabl);
+				strcpy( vec[0].tiker,  VecBase[0].tiker); 
+				chet=1;
+
+			}
+			else
+			{  
+				vec[k].OgDoh = sum/chet; 
+				k++; 
+				vec.push_back(tabl);
+				strcpy( vec[k].tiker,  VecBase[i].tiker);
+				chet=1;
+				sum=0; 
+			}
+		}
+
+	}; 
+	int kol=chet;
+	int t=0;
+	sum =0;
+
+	// вычисление рисков
+
+
+
+	for (int i=0; i<n; i++) 
+	{ 
+		if ( i==0) { VecBase[0].Risk = abs(VecBase[0].Doch - vec[0].OgDoh);
+		sum = pow (VecBase[0].Risk, 2);
+
+		}
+		else
+		{ VecBase[i].Risk =  abs ( VecBase[i].Doch - vec[t].OgDoh);
+		if ( i % kol == 0)
+		{
+			vec[t].Risk = sqrt(sum/(kol-1));
+
+			t++;
+
+		}
+		else
+		{
+			if ( i==n-1) 
+			{  
+				vec[t].Risk = sqrt(sum/(kol-1));
+
+				break;
+			}
+			else
+			{ 
+				sum = sum + VecBase[i].Risk;
+
+			}
+		}}
+	};
+	int ko= chet+1;
+	float oh = 1/ko;
+	//ковариация 
+	const int T = t;
+	float **mas = new float* [n];
+	for ( int i=0; i<n; i++) 
+	{mas[i] = new float [n];	}
+
+	int g =0;
+
+	for (int i = 0; i<n; i++)
+	{ 
+		if(i==0)
+		{// mas[0][0] = VecBase[0].Risk * VecBase[0].Risk;
+			g = 0;
+			for ( int b = 0; b<n;b++)
+				mas [g][b] = VecBase[i].Risk * VecBase[b].Risk;
+		}
+		else{
+			if (i % ko == 0) 
+			{ g++;
+			mas [g][0] = VecBase[i].Risk * VecBase[0].Risk;
+			}
+			else
+			{ 
+				g++;
+				for ( int b = 0; b<n;b++)
+					mas [g][b] = VecBase[i].Risk * VecBase[b].Risk;
+			}
+		}
+	}
+	/*
+	*/
+	//////////////////////
+
+	/////////////////////
+	float **summa = new float* [n];
+	for ( int i=0; i<n; i++) 
+	{summa[i] = new float [n];	}
+	for (int b = 0; b<ko;b++){
+		for (int f = 0; f<ko;f++){
+			summa[b][f] = 0;
+			for (int i = 0; i<ko;i++){
+				summa[b][f] = mas[b][f+i] + summa[b][f];}}}
+
+
+	float **kovar = new float* [n];
+	for ( int i=0; i<n; i++) 
+	{kovar[i] = new float [n];	}
+
+	for (int b = 0; b<ko;b++){
+		for (int f = 0; f<ko;f++){
+
+			kovar[b][f] = summa[b][f]/ko;
+
+		}
+	}
+
+	// ропуляция1
+	const int rasm = vec.size();
+
+	float *KOvar = new float [rasm];
+	for ( int i=0; i<rasm; i++) 
+	{ KOvar[i] = kovar[i][i];};
+
+
+
+
+	int *koeficient = new int [10];
+
+	Population pop1 (rasm);
+	Population pop2 (rasm);
+	Population pop3 (rasm);
+	Population pop4 (rasm);
+	Population pop5 (rasm);
+	Population pop6 (rasm);
+	Population pop7 (rasm);
+	Population pop8 (rasm);
+	Population pop9 (rasm);
+	Population pop10 (rasm);
+	int a=0;
+	int Dochodnost = 0.8;
+	int d =0;
+	int risk = 0.03;
+	int r = 0;
+	// подсчет выживаемости.
+	do{
+		koeficient[1] = pop1.life( rasm);
+		if( koeficient[1] = 0)
+		{  d = pop1.Dohodnost(vec,rasm);
+		r = pop1.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=1;};
+		};
+		koeficient[2]=pop2.life( rasm);
+		if( koeficient[2] = 0)
+		{  d = pop2.Dohodnost(vec,rasm);
+		r = pop2.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=2;};
+		};
+		koeficient[3]=pop3.life( rasm);
+		if( koeficient[3] = 0)
+		{  d = pop3.Dohodnost(vec,rasm);
+		r = pop3.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=3;};
+		};
+		koeficient[4]=pop4.life( rasm);
+		if( koeficient[4] = 0)
+		{  d = pop4.Dohodnost(vec,rasm);
+		r = pop4.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=4;};
+		};
+		koeficient[5]=pop5.life( rasm);
+		if( koeficient[5] = 0)
+		{  d = pop5.Dohodnost(vec,rasm);
+		r = pop5.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=5;};
+		};
+		koeficient[6]=pop6.life( rasm);
+		if( koeficient[6] = 0)
+		{  d = pop6.Dohodnost(vec,rasm);
+		r = pop6.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=6;};
+		};
+		koeficient[7]=pop7.life( rasm);
+		if( koeficient[7] = 0)
+		{  d = pop7.Dohodnost(vec,rasm);
+		r = pop7.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=7;};
+		};
+		koeficient[8]=pop8.life( rasm);
+		if( koeficient[8] = 0)
+		{  d = pop8.Dohodnost(vec,rasm);
+		r = pop8.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=8;};
+		};
+		koeficient[9]=pop9.life( rasm);
+		if( koeficient[9] = 0)
+		{  d = pop9.Dohodnost(vec,rasm);
+		r = pop9.Risk(KOvar,rasm);
+		if (d>Dochodnost && r<risk)
+		{
+			a=9;};
+		};
+		koeficient[10]=pop10.life( rasm);
+	if( koeficient[10] = 0)
+	{  d = pop10.Dohodnost(vec,rasm);
+	r = pop10.Risk(KOvar,rasm);
+	if (d>Dochodnost && r<risk)
+	{
+		a=10;};
+	};
+	/////////////////////////////////////скрещивание
+
+
+
+
+
+
+	}while (a == 0);
+
+	vecPrint(vec);
+	switch(a)
+	{
+	case 1:		pop1.Print(rasm);
+	case 2:		pop2.Print(rasm);
+	case 3:		pop3.Print(rasm);
+	case 4: pop4.Print(rasm);
+	case 5:pop5.Print(rasm);
+	case 6:pop6.Print(rasm);
+	case 7:pop7.Print(rasm);
+	case 8:pop8.Print(rasm);
+	case 9:pop9.Print(rasm);
+	case 10:pop10.Print(rasm);
+	}
+	
+
+
+	//  int *population = new int [rasm];
+	//  for (int i=0; i<rasm;i++
+
+	/*
+
+	int *solution = new int [rasm];
+	//Создать начальную популяцию
+	int time =0;
+	int pop = 100/rasm;
+	float *a = new float [rasm];
+	for ( int i=0; i<rasm; i++) 
+	{a[i]= Maska(pop);	}
+	float maxDoch = 0;
+	//Оценить приспособленность каждой особи
+	for ( int i=0; i<rasm; i++) 
+	{
+	maxDoch = maxDoch + vec[i].OgDoh * a[i];
+	solution[i] = a[i];};
+
+
+
+	//ПОКА НЕ останов ВЫПОЛНЯТЬ
+	float max = 0;
+	float osob = 0;
+	int num;
+	//НАЧАЛО /* создать популяцию нового поколения */
+	/*for (int i=0;i<rasm;i++)
+	{ if(vec[i].OgDoh > max)
+	{max = vec[i].OgDoh;}
+
+	for (int i=0;i<rasm;i++)
+	{
+	osob = rand()%100;
+	a[i] = (max/1000) + (solution[i] % 100);
+	}
+
+
+
+	ПОВТОРИТЬ (размер_популяции/2) РАЗ
+
+	НАЧАЛО /* цикл воспроизводства */
+
+	/*Выбрать две особи с высокой приспособленностью из предыдущего поколения для скрещивания
+
+	Скрестить выбранные особи и получить двух потомков
+
+	Оценить приспособленности потомков
+
+	Поместить потомков в новое поколение
+
+	КОНЕЦ
+
+	ЕСЛИ популяция сошлась ТО останов := TRUE
+
+	КОНЕЦ
+
+	КОНЕЦ */
+
+
+
+
+
+
+
+
+
+
+	/*   for (int i=0; i<n; i++) {
+	cout << VecBase[i].tiker << '	'<< VecBase[i].per<< '	' << VecBase[i].Doch << '	' << VecBase[i].Risk <<endl; }; 
+	for (int j=0; j<k+1; j++) {
+	cout <<  '	'<< endl;
+	cout << vec[j].tiker<< '	'<< vec[j].OgDoh << '	'<< vec[j].Risk <<endl;
+	} */
+
+	// print (Kovar,t,t);
+	//	  cout<<pop<<endl;
+	//  cout<< maxDoch <<endl;
+	//  print (summa,t,t);
+
+	system("pause");
+
+	return 0;
+}
